@@ -14,8 +14,8 @@
      SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
    ============================================================ */
 
-const SUPABASE_URL      = 'SUA_URL_AQUI';
-const SUPABASE_ANON_KEY = 'SUA_CHAVE_ANONIMA_AQUI';
+const SUPABASE_URL      = 'https://qjjszmqgajdcfpbjfwjw.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFqanN6bXFnYWpkY2ZwYmpmd2p3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQxMTA2ODMsImV4cCI6MjA4OTY4NjY4M30.Y68DqOHQWjcYpF0xR6XZuD_kDZ675tcVe2Ctjyh6W24';
 
 // ── Inicialização do cliente ─────────────────────────────────
 // Verifica se as credenciais foram preenchidas antes de inicializar
