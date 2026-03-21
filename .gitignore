@@ -1,0 +1,26 @@
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+npm-debug.log*
+
+# Dependências (caso use Node futuramente)
+node_modules/
+
+# Variáveis de ambiente (NUNCA versionar)
+.env
+.env.local
+.env.production
+
+# Editores
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# Build
+dist/
+build/

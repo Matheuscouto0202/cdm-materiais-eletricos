@@ -1,0 +1,146 @@
+[
+  {
+    "id": "disj-tramontina-1p-6a-curva-c",
+    "nome": "Disjuntor Tramontina 1P 6A Curva C",
+    "preco": 15.90,
+    "imagem": "assets/images/produtos/disjuntores/disjuntor-unipolar-6a.webp",
+    "categoria": "Disjuntores",
+    "estoque": false
+  },
+  {
+    "id": "disj-tramontina-1p-10a-curva-c",
+    "nome": "Disjuntor Tramontina 1P 10A Curva C",
+    "preco": 18.50,
+    "imagem": "assets/images/produtos/disjuntores/disjuntor-unipolar-10a.webp",
+    "categoria": "Disjuntores",
+    "estoque": true
+  },
+  {
+    "id": "disj-tramontina-1p-16a-curva-c",
+    "nome": "Disjuntor Tramontina 1P 16A Curva C",
+    "preco": 20.30,
+    "imagem": "assets/images/produtos/disjuntores/disjuntor-unipolar-16a.webp",
+    "categoria": "Disjuntores",
+    "estoque": true
+  },
+  {
+    "id": "disj-tramontina-1p-20a-curva-c",
+    "nome": "Disjuntor Tramontina 1P 20A Curva C",
+    "preco": 22.50,
+    "imagem": "assets/images/produtos/disjuntores/disjuntor-unipolar-20a.webp",
+    "categoria": "Disjuntores",
+    "estoque": true
+  },
+  {
+    "id": "disj-tramontina-1p-25a-curva-c",
+    "nome": "Disjuntor Tramontina 1P 25A Curva C",
+    "preco": 30.00,
+    "imagem": "assets/images/produtos/disjuntores/disjuntor-unipolar-25a.webp",
+    "categoria": "Disjuntores",
+    "estoque": true
+  },
+  {
+    "id": "disj-tramontina-1p-32a-curva-c",
+    "nome": "Disjuntor Tramontina 1P 32A Curva C",
+    "preco": 33.50,
+    "imagem": "assets/images/produtos/disjuntores/disjuntor-unipolar-32a.webp",
+    "categoria": "Disjuntores",
+    "estoque": true
+  },
+  {
+    "id": "disj-tramontina-1p-40a-curva-c",
+    "nome": "Disjuntor Tramontina 1P 40A Curva C",
+    "preco": 35.90,
+    "imagem": "assets/images/produtos/disjuntores/disjuntor-unipolar-40a.jpg",
+    "categoria": "Disjuntores",
+    "estoque": true
+  },
+  {
+    "id": "disj-tramontina-1p-50a-curva-c",
+    "nome": "Disjuntor Tramontina 1P 50A Curva C",
+    "preco": 40.20,
+    "imagem": "assets/images/produtos/disjuntores/disjuntor-unipolar-50a.webp",
+    "categoria": "Disjuntores",
+    "estoque": true
+  },
+  {
+    "id": "disj-tramontina-1p-63a-curva-c",
+    "nome": "Disjuntor Tramontina 1P 63A Curva C",
+    "preco": 50.00,
+    "imagem": "assets/images/produtos/disjuntores/disjuntor-unipolar-63a.webp",
+    "categoria": "Disjuntores",
+    "estoque": true
+  },
+  {
+    "id": "cabo-flex-25mm-azul-100m",
+    "nome": "Cabo Flexível 2,5mm Azul 100m",
+    "preco": 189.90,
+    "imagem": "assets/images/produtos/cabos/cabo-25mm-azul.jpg",
+    "categoria": "Cabos",
+    "estoque": true
+  },
+  {
+    "id": "cabo-flex-25mm-preto-100m",
+    "nome": "Cabo Flexível 2,5mm Preto 100m",
+    "preco": 189.90,
+    "imagem": "assets/images/produtos/cabos/cabo-25mm-preto.jpg",
+    "categoria": "Cabos",
+    "estoque": true
+  },
+  {
+    "id": "cabo-flex-40mm-100m",
+    "nome": "Cabo Flexível 4,0mm 100m",
+    "preco": 289.90,
+    "imagem": "assets/images/produtos/cabos/cabo-40mm.jpg",
+    "categoria": "Cabos",
+    "estoque": true
+  },
+  {
+    "id": "lampada-led-9w-e27",
+    "nome": "Lâmpada LED 9W E27 Branco Frio",
+    "preco": 14.90,
+    "imagem": "assets/images/produtos/lampadas/lampada-led-9w.jpg",
+    "categoria": "Lâmpadas",
+    "estoque": true
+  },
+  {
+    "id": "lampada-led-12w-e27",
+    "nome": "Lâmpada LED 12W E27 Branco Frio",
+    "preco": 18.90,
+    "imagem": "assets/images/produtos/lampadas/lampada-led-12w.jpg",
+    "categoria": "Lâmpadas",
+    "estoque": true
+  },
+  {
+    "id": "lampada-led-tubular-18w",
+    "nome": "Lâmpada LED Tubular T8 18W 120cm",
+    "preco": 29.90,
+    "imagem": "assets/images/produtos/lampadas/lampada-tubular-18w.jpg",
+    "categoria": "Lâmpadas",
+    "estoque": true
+  },
+  {
+    "id": "tomada-2p-t-10a",
+    "nome": "Tomada 2P+T 10A Branca",
+    "preco": 8.90,
+    "imagem": "assets/images/produtos/tomadas/tomada-2pt-10a.jpg",
+    "categoria": "Tomadas e Interruptores",
+    "estoque": true
+  },
+  {
+    "id": "interruptor-simples",
+    "nome": "Interruptor Simples 10A Branco",
+    "preco": 7.90,
+    "imagem": "assets/images/produtos/tomadas/interruptor-simples.jpg",
+    "categoria": "Tomadas e Interruptores",
+    "estoque": true
+  },
+  {
+    "id": "quadro-distribuicao-12",
+    "nome": "Quadro de Distribuição 12 Disjuntores",
+    "preco": 89.90,
+    "imagem": "assets/images/produtos/quadros/quadro-12.jpg",
+    "categoria": "Quadros Elétricos",
+    "estoque": true
+  }
+]
