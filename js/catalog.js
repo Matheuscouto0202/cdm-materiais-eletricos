@@ -1,30 +1,26 @@
 /* ============================================================
    CDM Materiais Elétricos — Catálogo de Produtos
    Carrega produtos.json, renderiza cards, busca e filtros
+
+   ESTRATÉGIA DE CARREGAMENTO (3 camadas):
+   1. fetch('data/produtos.json')    → sempre fresco, salva cache
+   2. localStorage 'cdm_produtos'   → usado se fetch falhar
+   3. window.PRODUTOS_DATA          → último recurso (produtos-data.js)
    ============================================================ */
 
-let todosProdutos   = [];  // cache de todos os produtos
-let categoriaAtiva  = 'Todos';
-let termoBusca      = '';
+let todosProdutos  = [];
+let categoriaAtiva = 'Todos';
+let termoBusca     = '';
 
-// ── Carregamento do JSON ─────────────────────────────────────
+// ── Carregamento ─────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', async function() {
   mostrarSkeleton();
 
   try {
-    const res = await fetch('data/produtos.json');
-    if (!res.ok) throw new Error('Falha ao carregar produtos');
-    todosProdutos = await res.json();
+    todosProdutos = await carregarProdutos();
   } catch (err) {
-    // Fallback: usa os dados embutidos em js/produtos-data.js
-    // (necessário ao abrir o arquivo diretamente no browser sem servidor)
-    if (window.PRODUTOS_DATA && window.PRODUTOS_DATA.length > 0) {
-      todosProdutos = window.PRODUTOS_DATA;
-    } else {
-      console.error('[Catálogo] Erro ao carregar produtos:', err);
-      mostrarErroCatalogo();
-      return;
-    }
+    mostrarErroCatalogo();
+    return;
   }
 
   renderFiltros();
@@ -32,12 +28,39 @@ document.addEventListener('DOMContentLoaded', async function() {
   iniciarBusca();
 });
 
+async function carregarProdutos() {
+  // Camada 1: fetch do JSON — fonte principal
+  try {
+    const res = await fetch('data/produtos.json');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    // Salva cache no localStorage para uso offline
+    try { localStorage.setItem('cdm_produtos', JSON.stringify(data)); } catch {}
+    return data;
+  } catch {}
+
+  // Camada 2: cache do localStorage (populado após 1ª abertura com Live Server)
+  try {
+    const cached = localStorage.getItem('cdm_produtos');
+    if (cached) {
+      const data = JSON.parse(cached);
+      if (Array.isArray(data) && data.length > 0) return data;
+    }
+  } catch {}
+
+  // Camada 3: dados embutidos em produtos-data.js (último recurso)
+  if (Array.isArray(window.PRODUTOS_DATA) && window.PRODUTOS_DATA.length > 0) {
+    return window.PRODUTOS_DATA;
+  }
+
+  throw new Error('Nenhuma fonte de dados disponível');
+}
+
 // ── Filtros por categoria ────────────────────────────────────
 function renderFiltros() {
   const container = document.getElementById('filtros');
   if (!container) return;
 
-  // Extrai categorias únicas
   const categorias = ['Todos', ...new Set(todosProdutos.map(p => p.categoria))];
 
   container.innerHTML = categorias.map(cat => `
@@ -51,12 +74,9 @@ function renderFiltros() {
 
 function selecionarFiltro(categoria) {
   categoriaAtiva = categoria;
-
-  // Atualiza visual dos botões
   document.querySelectorAll('.filtro-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.categoria === categoria);
   });
-
   renderProdutos();
 }
 
@@ -64,7 +84,6 @@ function selecionarFiltro(categoria) {
 function iniciarBusca() {
   const input = document.getElementById('busca-produto');
   if (!input) return;
-
   input.addEventListener('input', function() {
     termoBusca = this.value.trim().toLowerCase();
     renderProdutos();
@@ -81,7 +100,7 @@ function filtrarProdutos() {
   });
 }
 
-// ── Renderizar grid de produtos ──────────────────────────────
+// ── Renderizar grid ──────────────────────────────────────────
 function renderProdutos() {
   const grid = document.getElementById('produtos-grid');
   if (!grid) return;
@@ -100,13 +119,14 @@ function renderProdutos() {
     return;
   }
 
-  grid.innerHTML = produtos.map(produto => criarCardProduto(produto)).join('');
+  grid.innerHTML = produtos.map(p => criarCardProduto(p)).join('');
 }
 
 // ── Card de produto ──────────────────────────────────────────
 function criarCardProduto(produto) {
-  const precoFormatado = formatarMoeda(produto.preco);
-  const semEstoque     = !produto.estoque;
+  const semEstoque = !produto.estoque;
+  // Serializa o objeto para uso no onclick de forma segura
+  const dadosBtn = JSON.stringify(produto).replace(/"/g, '&quot;');
 
   return `
     <article class="produto-card" data-id="${produto.id}">
@@ -115,6 +135,7 @@ function criarCardProduto(produto) {
           src="${produto.imagem}"
           alt="${produto.nome}"
           loading="lazy"
+          decoding="async"
           onerror="this.src='assets/images/produto-sem-foto.svg'"
         >
       </div>
@@ -123,13 +144,13 @@ function criarCardProduto(produto) {
         <h3 class="produto-nome">${produto.nome}</h3>
         <div class="produto-preco">
           <span class="produto-preco-label">Preço unitário</span><br>
-          ${precoFormatado}
+          ${formatarMoeda(produto.preco)}
         </div>
         ${semEstoque ? '<p class="produto-estoque-esgotado">Produto esgotado</p>' : ''}
         <button
           class="btn-add-cart"
           ${semEstoque ? 'disabled' : ''}
-          onclick="onAddToCart(${JSON.stringify(produto).replace(/"/g, '&quot;')})"
+          onclick="onAddToCart(${dadosBtn})"
           title="${semEstoque ? 'Produto esgotado' : 'Adicionar ao carrinho'}"
         >
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -142,10 +163,6 @@ function criarCardProduto(produto) {
     </article>`;
 }
 
-/**
- * Handler chamado pelo botão do card. Recebe produto como objeto.
- * @param {Object} produto
- */
 function onAddToCart(produto) {
   if (!produto.estoque) return;
   adicionarItem(produto);
@@ -156,7 +173,6 @@ function onAddToCart(produto) {
 function mostrarSkeleton() {
   const grid = document.getElementById('produtos-grid');
   if (!grid) return;
-  // Exibe 8 placeholders enquanto carrega
   grid.innerHTML = Array(8).fill(`
     <div class="skeleton-card">
       <div class="skeleton skeleton-img"></div>
@@ -178,6 +194,6 @@ function mostrarErroCatalogo() {
           d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"/>
       </svg>
       <p>Não foi possível carregar o catálogo.<br>
-         <small>Abra o site com um servidor local (Live Server / Python).</small></p>
+         <small>Abra com Live Server no VSCode ou publique no Netlify.</small></p>
     </div>`;
 }

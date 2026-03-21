@@ -927,3 +927,113 @@ h3 { font-size: clamp(1.1rem, 3vw, 1.4rem); line-height: 1.4; }
 .skeleton-text { height: 14px; margin: 8px; }
 .skeleton-text.short { width: 60%; }
 .skeleton-btn { height: 36px; margin: 8px; }
+
+/* ── BOTÃO COPIAR PEDIDO ───────────────────────────────────── */
+.btn-copiar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: transparent;
+  color: var(--azul-claro);
+  border: 2px solid var(--azul-claro);
+  border-radius: var(--radius);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transicao);
+  font-family: inherit;
+  margin-top: 0.6rem;
+}
+.btn-copiar:hover { background: var(--azul-claro); color: var(--branco); }
+.btn-copiar:active { transform: scale(0.97); }
+
+/* ── HERO — FRASE DE CONVERSÃO ─────────────────────────────── */
+.hero-cta-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(37, 211, 102, 0.15);
+  border: 1px solid rgba(37, 211, 102, 0.4);
+  color: #4ade80;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.3rem 0.85rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+}
+
+/* ── BOTÃO FLUTUANTE — LABEL VISÍVEL NO MOBILE ─────────────── */
+.float-whatsapp-label {
+  position: fixed;
+  bottom: 5.5rem;
+  right: 1.5rem;
+  z-index: 899;
+  background: var(--texto-escuro);
+  color: var(--branco);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 0.7rem;
+  border-radius: 50px;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+}
+.float-whatsapp:hover + .float-whatsapp-label,
+.float-whatsapp-label.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── BOTÃO CARRINHO — DESTAQUE QUANDO TEM ITENS ────────────── */
+.btn-cart.tem-itens {
+  background: rgba(37, 211, 102, 0.18);
+  border: 1px solid rgba(37, 211, 102, 0.4);
+}
+
+/* ── MOBILE — BARRA DE AÇÃO FIXA NO RODAPÉ ─────────────────── */
+@media (max-width: 767px) {
+  .mobile-action-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 800;
+    display: flex;
+    gap: 0;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+  }
+  .mobile-action-bar a,
+  .mobile-action-bar button {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.9rem 0.5rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    text-decoration: none;
+  }
+  .mobile-action-bar .mab-catalogo {
+    background: var(--azul-escuro);
+    color: var(--branco);
+  }
+  .mobile-action-bar .mab-whatsapp {
+    background: var(--verde-wa);
+    color: var(--branco);
+  }
+  /* Espaço para a barra fixa não cobrir o conteúdo */
+  body { padding-bottom: 56px; }
+  /* Botão flutuante WhatsApp sobe um pouco para não conflitar */
+  .float-whatsapp { bottom: 4.5rem; }
+}
+.skeleton-btn { height: 36px; margin: 8px; }

@@ -120,12 +120,19 @@
     <div class="hero-overlay"></div>
 
     <div class="container hero-content">
+      <span class="hero-cta-tag">
+        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.548 4.104 1.508 5.836L0 24l6.335-1.474A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.304-1.553l-.38-.225-3.756.874.917-3.655-.247-.388A9.818 9.818 0 1 1 12 21.818z"/>
+        </svg>
+        Peça seu orçamento rápido pelo WhatsApp
+      </span>
+
       <span class="hero-badge">⚡ Mairinque e Região</span>
 
       <h1>Materiais elétricos com qualidade e preço justo</h1>
       <p>
         Disjuntores, cabos, lâmpadas LED, tomadas e muito mais.
-        Solicite seu orçamento agora pelo WhatsApp — atendimento rápido e sem enrolação!
+        Monte seu pedido no catálogo e receba o orçamento pelo WhatsApp — rápido, fácil e sem compromisso!
       </p>
 
       <div class="hero-buttons">
@@ -364,6 +371,15 @@
             </label>
             <span id="erro-lgpd" class="form-error" role="alert"></span>
 
+            <!-- Botão copiar pedido (alternativa ao WhatsApp) -->
+            <button type="button" id="btn-copiar-pedido" class="btn-copiar">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/>
+              </svg>
+              Copiar pedido (colar no WhatsApp)
+            </button>
+
             <!-- Botão finalizar -->
             <button type="submit" class="btn-finalizar">
               <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
@@ -573,6 +589,25 @@
        SCRIPTS
        Ordem importa: analytics → utils → cart → catalog → checkout → main
        ══════════════════════════════════════════════════════════ -->
+  <!-- ── BARRA MOBILE FIXA (visível apenas em telas < 768px) ── -->
+  <div class="mobile-action-bar" aria-label="Ações rápidas">
+    <button class="mab-catalogo" onclick="document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z"/>
+      </svg>
+      Ver Produtos
+    </button>
+    <a class="mab-whatsapp"
+       href="https://wa.me/5511921300534?text=Olá%2C%20vim%20pelo%20site%20e%20quero%20um%20orçamento!"
+       target="_blank" rel="noopener">
+      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.548 4.104 1.508 5.836L0 24l6.335-1.474A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.304-1.553l-.38-.225-3.756.874.917-3.655-.247-.388A9.818 9.818 0 1 1 12 21.818z"/>
+      </svg>
+      WhatsApp
+    </a>
+  </div>
+
   <script src="js/analytics.js"></script>
   <script src="js/utils.js"></script>
   <script src="js/cart.js"></script>
