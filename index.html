@@ -608,10 +608,34 @@
     </a>
   </div>
 
+  <!--
+    ══════════════════════════════════════════════════════════
+    ORDEM DE CARREGAMENTO DOS SCRIPTS — NÃO ALTERAR A ORDEM
+    1. Supabase CDN      → SDK oficial
+    2. supabase-config   → credenciais + cliente (configure aqui)
+    3. supabase-api      → funções buscar/adicionar/editar/remover
+    4. analytics         → Meta Pixel, GA4, GTM
+    5. utils             → CPF, telefone, formatações
+    6. produtos-data     → fallback embutido (último recurso)
+    7. cart              → carrinho localStorage
+    8. catalog           → renderiza produtos (usa Supabase ou fallback)
+    9. checkout          → formulário + WhatsApp
+    10. main             → menu, scroll, inicialização
+    ══════════════════════════════════════════════════════════
+  -->
+
+  <!-- 1. Supabase SDK (CDN oficial) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+
+  <!-- 2-3. Configuração e API do Supabase -->
+  <script src="js/supabase-config.js"></script>
+  <script src="js/supabase-api.js"></script>
+
+  <!-- 4-10. Scripts do site -->
   <script src="js/analytics.js"></script>
   <script src="js/utils.js"></script>
-  <script src="js/cart.js"></script>
   <script src="js/produtos-data.js"></script>
+  <script src="js/cart.js"></script>
   <script src="js/catalog.js"></script>
   <script src="js/checkout.js"></script>
   <script src="js/main.js"></script>

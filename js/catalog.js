@@ -1,11 +1,11 @@
 /* ============================================================
    CDM Materiais Elétricos — Catálogo de Produtos
-   Carrega produtos.json, renderiza cards, busca e filtros
 
-   ESTRATÉGIA DE CARREGAMENTO (3 camadas):
-   1. fetch('data/produtos.json')    → sempre fresco, salva cache
-   2. localStorage 'cdm_produtos'   → usado se fetch falhar
-   3. window.PRODUTOS_DATA          → último recurso (produtos-data.js)
+   ESTRATÉGIA DE CARREGAMENTO (4 camadas, em ordem):
+   1. Supabase API     → fonte principal quando configurado
+   2. produtos.json    → fallback local (fetch), salva cache
+   3. localStorage     → cache do fetch anterior
+   4. PRODUTOS_DATA    → último recurso embutido (produtos-data.js)
    ============================================================ */
 
 let todosProdutos  = [];
@@ -29,26 +29,39 @@ document.addEventListener('DOMContentLoaded', async function() {
 });
 
 async function carregarProdutos() {
-  // Camada 1: fetch do JSON — fonte principal
+  // Camada 1: Supabase — fonte principal (quando configurado)
+  if (typeof supabaseDisponivel === 'function' && supabaseDisponivel()) {
+    try {
+      const dados = await buscarProdutos();
+      if (dados.length > 0) {
+        // Salva cache local para fallback offline
+        try { localStorage.setItem('cdm_produtos', JSON.stringify(dados)); } catch {}
+        return dados;
+      }
+    } catch (err) {
+      console.warn('[Catálogo] Supabase falhou, tentando fallback:', err.message);
+    }
+  }
+
+  // Camada 2: fetch do produtos.json — fallback local
   try {
     const res = await fetch('data/produtos.json');
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-    // Salva cache no localStorage para uso offline
-    try { localStorage.setItem('cdm_produtos', JSON.stringify(data)); } catch {}
-    return data;
+    const dados = await res.json();
+    try { localStorage.setItem('cdm_produtos', JSON.stringify(dados)); } catch {}
+    return dados;
   } catch {}
 
-  // Camada 2: cache do localStorage (populado após 1ª abertura com Live Server)
+  // Camada 3: cache do localStorage (da última busca bem-sucedida)
   try {
     const cached = localStorage.getItem('cdm_produtos');
     if (cached) {
-      const data = JSON.parse(cached);
-      if (Array.isArray(data) && data.length > 0) return data;
+      const dados = JSON.parse(cached);
+      if (Array.isArray(dados) && dados.length > 0) return dados;
     }
   } catch {}
 
-  // Camada 3: dados embutidos em produtos-data.js (último recurso)
+  // Camada 4: dados embutidos em produtos-data.js (último recurso)
   if (Array.isArray(window.PRODUTOS_DATA) && window.PRODUTOS_DATA.length > 0) {
     return window.PRODUTOS_DATA;
   }
