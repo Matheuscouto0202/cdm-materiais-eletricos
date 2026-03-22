@@ -15,6 +15,9 @@ node_modules/
 .env.local
 .env.production
 
+# Credenciais do Supabase (NUNCA versionar — use supabase-config.example.js como base)
+js/supabase-config.js
+
 # Editores
 .vscode/settings.json
 .idea/
