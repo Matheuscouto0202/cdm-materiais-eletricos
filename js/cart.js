@@ -111,6 +111,12 @@ function atualizarBadge() {
   // Atualiza também o label de contagem no header do sidebar
   const countLabel = document.querySelector('.cart-count-label');
   if (countLabel) countLabel.textContent = `${total} ${total === 1 ? 'item' : 'itens'}`;
+
+  // Botão flutuante "Ver Carrinho"
+  const btnFlutuante = document.getElementById('btn-ver-carrinho-flutuante');
+  const badgeFlutuante = document.getElementById('btn-ver-carrinho-badge');
+  if (btnFlutuante) btnFlutuante.style.display = total > 0 ? 'flex' : 'none';
+  if (badgeFlutuante) badgeFlutuante.textContent = total > 99 ? '99+' : total;
 }
 
 function animarBadge() {

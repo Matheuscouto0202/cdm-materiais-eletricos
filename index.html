@@ -104,6 +104,7 @@
       <a href="#checkout">📋 Solicitar Orçamento</a>
       <a href="#contato">📞 Contato</a>
       <a href="https://wa.me/5511921300534" target="_blank" rel="noopener">💬 WhatsApp</a>
+      <a href="https://www.instagram.com/cdm_materiais_eletricos?igsh=ZDdnM2l5c2o0b3E1" target="_blank" rel="noopener">📸 Instagram</a>
     </nav>
   </header>
 
@@ -178,7 +179,17 @@
       <h2 class="section-title">Por que escolher a CDM?</h2>
       <p class="section-subtitle">Qualidade, confiança e atendimento que fazem a diferença</p>
 
-      <div class="diferenciais-grid">
+      <div class="loja-foto-wrapper">
+        <a href="https://maps.google.com/?q=Rua+Antônio+Anhaia,+56,+Mairinque,+SP" target="_blank" rel="noopener" aria-label="Ver no Google Maps">
+          <img src="assets/images/loja-externa.png"
+               alt="Fachada da CDM Materiais Elétricos em Mairinque/SP"
+               class="loja-foto"
+               loading="lazy">
+          <span class="loja-foto-legenda">📍 Nossa loja — Rua Antônio Anhaia, 56 · Mairinque/SP · Clique para ver no mapa</span>
+        </a>
+      </div>
+
+<div class="diferenciais-grid">
 
         <div class="diferencial-card">
           <div class="diferencial-icon">
@@ -463,6 +474,18 @@
           </div>
         </div>
 
+        <a href="https://www.instagram.com/cdm_materiais_eletricos?igsh=ZDdnM2l5c2o0b3E1" target="_blank" rel="noopener" class="contato-card">
+          <div class="contato-icon" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff">
+            <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </div>
+          <div>
+            <h4>Instagram</h4>
+            <p>@cdm_materiais_eletricos</p>
+          </div>
+        </a>
+
       </div>
 
       <!-- CTA WhatsApp -->
@@ -505,6 +528,7 @@
           <a href="#contato">Contato</a>
           <a href="privacidade.html">Privacidade</a>
           <a href="https://wa.me/5511921300534" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://www.instagram.com/cdm_materiais_eletricos?igsh=ZDdnM2l5c2o0b3E1" target="_blank" rel="noopener">Instagram</a>
         </div>
         <p class="footer-copy">
           © <span id="ano-atual"></span> CDM Materiais Elétricos. Todos os direitos reservados.
@@ -513,6 +537,7 @@
 
     </div>
   </footer>
+
 
 
   <!-- ══════════════════════════════════════════════════════════
@@ -534,6 +559,16 @@
        SIDEBAR DO CARRINHO
        ══════════════════════════════════════════════════════════ -->
   <div id="cart-overlay" class="cart-overlay" role="presentation"></div>
+
+  <!-- Botão flutuante Ver Carrinho -->
+  <button id="btn-ver-carrinho-flutuante" class="ver-carrinho-flutuante" aria-label="Ver carrinho" style="display:none" onclick="abrirCarrinho()">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round"
+        d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"/>
+    </svg>
+    Ver Carrinho
+    <span id="btn-ver-carrinho-badge"></span>
+  </button>
 
   <aside id="cart-sidebar" class="cart-sidebar" role="dialog" aria-label="Carrinho de compras" aria-modal="true">
 
@@ -589,6 +624,9 @@
        SCRIPTS
        Ordem importa: analytics → utils → cart → catalog → checkout → main
        ══════════════════════════════════════════════════════════ -->
+  <!-- ── MODAL DE DETALHES DO PRODUTO ── -->
+  <div id="modal-produto" hidden></div>
+
   <!-- ── BARRA MOBILE FIXA (visível apenas em telas < 768px) ── -->
   <div class="mobile-action-bar" aria-label="Ações rápidas">
     <button class="mab-catalogo" onclick="document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})">
@@ -612,15 +650,14 @@
     ══════════════════════════════════════════════════════════
     ORDEM DE CARREGAMENTO DOS SCRIPTS — NÃO ALTERAR A ORDEM
     1. Supabase CDN      → SDK oficial
-    2. supabase-config   → credenciais + cliente (configure aqui)
-    3. supabase-api      → funções buscar/adicionar/editar/remover
+    2. supabase-config   → credenciais + cliente
+    3. supabase-api      → funções de busca no Supabase
     4. analytics         → Meta Pixel, GA4, GTM
     5. utils             → CPF, telefone, formatações
-    6. produtos-data     → fallback embutido (último recurso)
-    7. cart              → carrinho localStorage
-    8. catalog           → renderiza produtos (usa Supabase ou fallback)
-    9. checkout          → formulário + WhatsApp
-    10. main             → menu, scroll, inicialização
+    6. cart              → carrinho localStorage
+    7. catalog           → renderiza produtos (fonte: Supabase)
+    8. checkout          → formulário + WhatsApp
+    9. main              → menu, scroll, inicialização
     ══════════════════════════════════════════════════════════
   -->
 
@@ -634,7 +671,6 @@
   <!-- 4-10. Scripts do site -->
   <script src="js/analytics.js"></script>
   <script src="js/utils.js"></script>
-  <script src="js/produtos-data.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/catalog.js"></script>
   <script src="js/checkout.js"></script>
